@@ -113,16 +113,31 @@ Runs the compiled `dist/server.js`.
 ```json
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "commonjs",
-    "outDir": "./dist",
+    // File Layout
     "rootDir": "./src",
+    "outDir": "./dist",
+    "module": "esnext",
+    "target": "esnext",
+    "types": ["node"],
+
+    // Other Outputs
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
     "strict": true,
-    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
     "skipLibCheck": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": []
 }
 ```
 
@@ -135,7 +150,7 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: ["src/server.ts"],
-  format: ["esm"],
+  format: ["esm"], // Keep this as ESM
   target: "esnext",
   outDir: "dist",
   clean: true,
@@ -150,8 +165,6 @@ export default defineConfig({
   },
 });
 ```
-
-> The `createRequire` banner allows the ESM bundle to use CommonJS `require()` where needed (e.g., for packages that don't ship ESM).
 
 ---
 
