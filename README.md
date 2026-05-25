@@ -240,5 +240,5 @@ npm install express pg bcryptjs jsonwebtoken tsup dotenv cors
 ### Dev
 
 ```bash
-npm install -D typescript tsx @types/express @types/pg @types/jsonwebtoken @types/cors
+npm install -D typescript tsx @types/express @types/pg @types/jsonwebtoken @types/cors ts-node @types/node tsx
 ```
